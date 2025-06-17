@@ -1,6 +1,6 @@
-export default function HomePage() {
+export default function List() {
   return `
-    <section class="homePage">
+    <section class="list">
       <h2>리스트 (임시)</h2>
       <p>글로벌 네비게이션 바 확인용</p>
     </section>

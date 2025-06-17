@@ -7,11 +7,12 @@ import Header from "./components/Header.js";
 const routes = {
   "/": LoginPage,
   "/signup": SignUp,
-  "/List": List,
+  "/list": List,
 };
 //주소 찾기
 function parseLocation() {
-  return location.hash.slice(1).toLowerCase() || "/";
+  const hash = location.hash.slice(1).toLowerCase() || "/";
+  return "/" + hash.replace(/\/$/, "");
 }
 
 window.addEventListener("hashchange", router);
@@ -20,6 +21,8 @@ export default router;
 function router() {
   const path = parseLocation();
   const render = routes[path] || LoginPage;
+
+  console.log("현재 path:", path);
 
   //메인 콘텐츠(app)
   document.getElementById("app").innerHTML = render();
