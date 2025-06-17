@@ -20,5 +20,16 @@ export default function LoginPage() {
         <a href="#/signup">회원가입</a> | <a href="#">비밀번호 찾기</a>
       </div>
     </div>
-  </section>`;
+  </section>
+
+	  <script>
+      const tabButtons = document.querySelectorAll(".tab button");
+      tabButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          tabButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+        });
+      });
+    </script>
+	`;
 }
