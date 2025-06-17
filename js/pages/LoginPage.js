@@ -2,9 +2,11 @@ export default function LoginPage() {
   return `
   <section class="loginPage">
     <h1 class="logo">
-      <a href="#/" aria-label="getti 홈으로 이동하기">getti</a>
+      <a href="#/" aria-label="getti 홈으로 이동하기">
+			<img src="./assets/getti.svg" alt="getti" />
+			</a>
     </h1>
-    <div class="login-box">
+    <div class="box">
       <div class="tab">
         <button class="active">구매회원 로그인</button>
         <button>판매회원 로그인</button>
