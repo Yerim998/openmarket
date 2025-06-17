@@ -9,11 +9,14 @@ export function setupLoginTabToggle() {
       <form id="login-form" class="login-form" data-type="${userType}">
         <input type="text" placeholder="아이디" />
         <input type="password" placeholder="비밀번호" />
+				<p class="error-msg" id="login-error" style="display: none;"></p>
         <button type="submit">로그인</button>
       </form>
     `;
 
     const form = loginContainer.querySelector("#login-form");
+    const errorMsg = form.querySelector("#login-error");
+
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -22,28 +25,34 @@ export function setupLoginTabToggle() {
       const id = idInput.value.trim();
       const pw = pwInput.value.trim();
 
+      errorMsg.style.display = "none";
+      errorMsg.innerText = "";
+
       if (!id) {
-        alert("아이디를 입력해주세요.");
+        errorMsg.innerText = "아이디를 입력해주세요.";
+        errorMsg.style.display = "block";
         idInput.focus();
         return;
       }
 
       if (!pw) {
-        alert("비밀번호를 입력해주세요.");
+        errorMsg.innerText = "비밀번호를 입력해주세요.";
+        errorMsg.style.display = "block";
         pwInput.focus();
         return;
       }
 
       // ⭐⭐⭐임시 테스트용 더미!! 나중에 API연결 수정할 것⭐⭐⭐
-      const dummyId = "test123";
+      const dummyId = "test1234";
       const dummyPw = "pass1234";
 
       if (id !== dummyId || pw !== dummyPw) {
-        alert("아이디 또는 비밀번호가 일치하지 않습니다.");
+        errorMsg.innerText = "아이디 또는 비밀번호가 일치하지 않습니다.";
+        errorMsg.style.display = "block";
         return;
       }
 
-      console.log("✅ 유효성 검사 통과. 로그인 시도 중...");
+      console.log("✅ 유효성 검사 통과. 로그인 시도");
     });
   };
 

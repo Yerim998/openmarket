@@ -15,17 +15,18 @@ export default function LoginPage() {
       </div>
 
 			<div class="login-container">
-								<form id="login-form" class="login-form">
-								<input type="text" placeholder="아이디" />
-								<input type="password" placeholder="비밀번호" />
-								<button type="submit">로그인</button>
-								</form>
+				<form id="login-form" class="login-form">
+					<input type="text" placeholder="아이디" />
+					<input type="password" placeholder="비밀번호" />
+					<p class="error-msg" id="login-error" style="display: none;"></p>
+					<button type="submit">로그인</button>
+				</form>
 			</div>
 
 
-				<div class="footer-link">
+		<div class="footer-link">
 				<a href="#/signup">회원가입</a> | <a href="#">비밀번호 찾기</a>
-					</div>
+			</div>
     </div>
   </section>
 	`;
