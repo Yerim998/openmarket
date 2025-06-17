@@ -21,3 +21,20 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
+
+body {
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+.logo a {
+	display: block;
+	width: 120px;
+	height: 40px;
+	background:url('../')
+}
+
