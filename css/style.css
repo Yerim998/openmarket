@@ -137,16 +137,31 @@ input {
   margin: 0 auto;
 }
 
-.gnbInput {
-  width: 100%;
-  max-width: 400px;
-  border: 3px solid #ce2160;
-  border-radius: 24px;
-}
-
 .search {
   flex: 1;
   margin: 0 12px;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+.gnbInput {
+  width: 100%;
+  padding: 10px 40px 10px 16px;
+  border: 3px solid #ce2160;
+  border-radius: 24px;
+  margin: 0;
+}
+
+.searchBtn {
+  width: 28px;
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .gnbLogo {
