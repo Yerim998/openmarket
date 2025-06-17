@@ -1,6 +1,6 @@
 export default function LoginPage() {
   return `
-  <section calss="login">
+  <section class="login">
     <h1 class="logo">getti</h1>
     <div class="tab">
       <button class="active">구매회원 로그인</button>
@@ -12,7 +12,7 @@ export default function LoginPage() {
       <button type="submit">로그인</button>
     </form>
     <div class="footer-link">
-      <a herf="#/signup">회원가입</a> | <a herf="#">비밀번호 찾기</a>
+      <a href="#/signup">회원가입</a> | <a href="#">비밀번호 찾기</a>
     </div>
   </section>
 	`;
