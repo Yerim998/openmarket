@@ -30,10 +30,10 @@ function router() {
     gnbContainer.innerHTML = Header();
   } else {
     gnbContainer.innerHTML = ""; // 로그인 페이지에서는 GNB 제거
+  }
 
-    //로그인 탭 토글
-    if (path === "/") {
-      setupLoginTabToggle();
-    }
+  //로그인 탭 토글
+  if (path === "/") {
+    setupLoginTabToggle();
   }
 }

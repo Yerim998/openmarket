@@ -1,4 +1,4 @@
-export default function GNB() {
+export default function Header() {
   return `
     <header class="gnb">
       <h1 class="logo">
