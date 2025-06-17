@@ -2,7 +2,7 @@ import LoginPage from "./pages/LoginPage.js";
 import SignUp from "./pages/SignUp.js";
 import { setupLoginTabToggle } from "./pages/LoginTab.js";
 import List from "./pages/List.js";
-import Header from "./components/Header.js";
+import Header, { setupHeaderEvent } from "./components/Header.js";
 
 const routes = {
   "/": LoginPage,
@@ -29,8 +29,10 @@ function router() {
 
   //gnb등장조건
   const gnbContainer = document.getElementById("gnb");
+
   if (path !== "/") {
     gnbContainer.innerHTML = Header();
+    setupHeaderEvent();
   } else {
     gnbContainer.innerHTML = ""; // 로그인 페이지에서는 GNB 제거
   }
