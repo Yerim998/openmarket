@@ -1,20 +1,20 @@
-import LoginPage from './pages/LoginPage.js'
-import SignUp from './pages/SignUp.js'
+import LoginPage from "./pages/LoginPage.js";
+import SignUp from "./pages/SignUp.js";
 
 const routes = {
-	'/': LoginPage
-	'/signup': SignUp
-}
+  "/": LoginPage,
+  "/signup": SignUp,
+};
 
 function parseLocation() {
-	return location.hash.slice(1).toLowerCase() || '/';
+  return location.hash.slice(1).toLowerCase() || "/";
 }
 
 function router() {
-	const path = parseLocation();
-	const render = routes[path] || LoginPage;
-	document.getElementById('app').innerHTML = render();
+  const path = parseLocation();
+  const render = routes[path] || LoginPage;
+  document.getElementById("app").innerHTML = render();
 }
 
-window.addEventListener('hashchange', router);
+window.addEventListener("hashchange", router);
 export default router;
