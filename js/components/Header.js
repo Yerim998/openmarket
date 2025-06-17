@@ -37,8 +37,8 @@ export function setupHeaderEvent() {
   function handleSearch() {
     const keyword = input.value.trim();
     if (keyword) {
-      console.log(`🔍 검색어: ${keyword}`);
-      // TODO: 검색 결과 페이지로 이동
+      console.log(`검색어: ${keyword}`);
+      // 검색 결과 페이지로 이동
     } else {
       alert("검색어를 입력하세요!");
     }

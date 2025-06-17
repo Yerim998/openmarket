@@ -6,7 +6,6 @@
 
 body {
   background-color: #ffffff;
-  /* padding: 60px 20px; */
   line-height: 1.5;
 }
 
@@ -39,7 +38,7 @@ button {
 }
 
 .logo {
-  margin-bottom: 70px;
+  margin: 70px;
 }
 
 .logo img {
