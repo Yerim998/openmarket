@@ -13,10 +13,10 @@ const routes = {
 
 //주소 찾기(파싱)
 function parseLocation() {
-  let hash = location.hash.replace("#", "").toLowerCase();
+	let hash = location.hash.replace("#", "").toLowerCase();
   if (!hash) hash = "/login";
-  if (!hash.startsWith("/")) hash = "/" + hash;
-  return hash;
+	if (!hash.startsWith("/")) hash = "/" + hash;
+	return hash;
 }
 
 //로그인 상태 확인-토큰교체 필수⭐⭐⭐
@@ -46,7 +46,7 @@ function router() {
 
   if (hideGnbPaths.includes(path)) {
     gnbContainer.innerHTML = "";
-    if (path === "/") setupLoginTabToggle();
+    if (path === "/login") setupLoginTabToggle();
   } else {
     gnbContainer.innerHTML = Header();
     setupHeaderEvent();
