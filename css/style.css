@@ -225,3 +225,97 @@ input:focus {
   font-size: 0.85rem;
   margin-top: 12px;
 }
+
+/* 회원가입 폼 스타일링 */
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 36px;
+  background: #fff;
+  border-radius: 0 0 12px 12px;
+  border: #ccc solid 1px;
+}
+
+.signup-form label {
+  color: #aaa;
+  font-weight: 300;
+}
+
+.signup-form input {
+  width: 100%;
+  height: 50px;
+  padding: 12px;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.signup-form button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background-color: #ce2160;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.id-check {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.id-check > button {
+  width: 40%;
+  height: 50px;
+  margin-left: 12px;
+}
+
+/* 휴대폰번호 입력창 */
+.phoneGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.phoneNum {
+  color: #aaa;
+  width: 80%;
+  height: 50px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  appearance: none;
+
+	
+}
+
+/* 체크박스 및 약관 */
+.agree {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.agree label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.signup-form button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

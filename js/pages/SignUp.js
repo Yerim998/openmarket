@@ -19,22 +19,22 @@ export default function SignUp() {
         <form id="signup-form" class="signup-form" data-type="buyer">
           <label>아이디</label>
           <div class="id-check">
-            <input type="text" placeholder="아이디" />
+            <input type="text" placeholder="" />
             <button type="button" class="check-btn">중복확인</button>
           </div>
 
           <label>비밀번호</label>
-          <input type="password" placeholder="비밀번호" />
+          <input type="password" placeholder="" />
 
           <label>비밀번호 재확인</label>
-          <input type="password" placeholder="비밀번호 재확인" />
+          <input type="password" placeholder="" />
 
           <label>이름</label>
-          <input type="text" placeholder="이름" />
+          <input type="text" placeholder="" />
 
           <label>휴대폰번호</label>
-          <div class="phone-group">
-            <select>
+          <div class="phoneGroup">
+            <select class="phoneNum">
               <option value="010">010</option>
               <option value="011">011</option>
               <option value="016">016</option>
@@ -42,14 +42,14 @@ export default function SignUp() {
               <option value="018">018</option>
               <option value="019">019</option>
             </select>
-            <input type="text" placeholder="앞자리" />
-            <input type="text" placeholder="뒷자리" />
+            <input type="text" placeholder="" />
+            <input type="text" placeholder="" />
           </div>
 
           <div class="agreement">
             <label>
               <input type="checkbox" id="agree" />
-              호두샵 이용약관 및 개인정보처리방침에 동의합니다.
+              게티마켓 이용약관 및 개인정보처리방침에 동의합니다.
             </label>
           </div>
 
