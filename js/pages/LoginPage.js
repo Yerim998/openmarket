@@ -25,7 +25,7 @@ export default function LoginPage() {
 
 
 		<div class="footer-link">
-				<a href="#/signup">회원가입</a> | <a href="#">비밀번호 찾기</a>
+				<a href="#signup">회원가입</a> | <a href="#">비밀번호 찾기</a>
 			</div>
     </div>
   </section>
