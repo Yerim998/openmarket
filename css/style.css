@@ -221,6 +221,7 @@ input:focus {
 }
 
 .error-msg {
+  display: none;
   color: #eb5757;
   font-size: 0.85rem;
   margin-top: 12px;
@@ -279,6 +280,22 @@ input:focus {
   width: 40%;
   height: 50px;
   margin-left: 12px;
+}
+
+.pw-box {
+  position: relative;
+}
+
+.pw-icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 25%;
+  left: 90%;
+
+  background-image: url("/assets/icon-check-off.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 /* 휴대폰번호 입력창 */
