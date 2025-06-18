@@ -1,3 +1,15 @@
+import router from "../router.js";
+
+function getUsers() {
+  return JSON.parse(localStorage.getItem("users")) || [];
+}
+
+function saveUser(userData) {
+  const users = getUsers();
+  users.push(userData);
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
 export function setupSignUpEvent() {
   const form = document.querySelector("#signup-form");
 
@@ -179,6 +191,14 @@ export function setupSignUpEvent() {
       phoneValid &&
       agreeCheckbox.checked
     ) {
+      const userData = {
+        id: idInput.value.trim(),
+        pw: pwInput.value.trim(),
+        name: nameInput.value.trim(),
+        phone: phoneNum.value + phoneMid.value + phoneEnd.value,
+      };
+      saveUser(userData);
+
       alert("회원가입이 완료되었습니다.");
       location.hash = "#/login";
       router();
