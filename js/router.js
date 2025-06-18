@@ -39,9 +39,11 @@ function router() {
 
   //gnb등장조건
   const gnbContainer = document.getElementById("gnb");
-  if (path === "/") {
+  const hideGnbPaths = ["/", "/signup"];
+
+  if (hideGnbPaths.includes(path)) {
     gnbContainer.innerHTML = "";
-    setupLoginTabToggle();
+    if (path === "/") setupLoginTabToggle();
   } else {
     gnbContainer.innerHTML = Header();
     setupHeaderEvent();
