@@ -9,14 +9,17 @@ const routes = {
   "/signup": SignUp,
   "/list": List,
 };
-//주소 찾기
+
+//주소 찾기(파싱)
 function parseLocation() {
   const hash = location.hash.slice(1).toLowerCase() || "/";
   return "/" + hash.replace(/\/$/, "");
 }
 
-window.addEventListener("hashchange", router);
-export default router;
+//로그인 상태 확인-토큰교체 필수⭐⭐⭐
+function isLoggedIn() {
+  return !!localStorage.getItem("user");
+}
 
 function router() {
   const path = parseLocation();
@@ -24,21 +27,25 @@ function router() {
 
   console.log("현재 path:", path);
 
-  //메인 콘텐츠(app)
+  //비로그인시 로그인페이지로
+  if (path !== "/" && !isLoggedIn()) {
+    sessionStorage.setItem("prevPath", location.hash);
+    location.hash = "/";
+    return;
+  }
+
+  //app에 문자열 return-spa
   document.getElementById("app").innerHTML = render();
 
   //gnb등장조건
   const gnbContainer = document.getElementById("gnb");
-
-  if (path !== "/") {
+  if (path === "/") {
+    gnbContainer.innerHTML = "";
+    setupLoginTabToggle();
+  } else {
     gnbContainer.innerHTML = Header();
     setupHeaderEvent();
-  } else {
-    gnbContainer.innerHTML = ""; // 로그인 페이지에서는 GNB 제거
-  }
-
-  //로그인 탭 토글
-  if (path === "/") {
-    setupLoginTabToggle();
   }
 }
+window.addEventListener("hashchange", router);
+export default router;

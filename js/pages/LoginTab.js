@@ -9,7 +9,7 @@ export function setupLoginTabToggle() {
       <form id="login-form" class="login-form" data-type="${userType}">
         <input type="text" placeholder="아이디" />
         <input type="password" placeholder="비밀번호" />
-				<p class="error-msg" id="login-error" style="display: none;"></p>
+        <p class="error-msg" id="login-error" style="display: none;"></p>
         <button type="submit">로그인</button>
       </form>
     `;
@@ -42,9 +42,9 @@ export function setupLoginTabToggle() {
         return;
       }
 
-      // ⭐⭐⭐임시 테스트용 더미!! 나중에 API연결 수정할 것⭐⭐⭐
+      // ⭐⭐⭐ 임시 더미 아이디
       const dummyId = "test1234";
-      const dummyPw = "pass1234";
+      const dummyPw = "test234";
 
       if (id !== dummyId || pw !== dummyPw) {
         errorMsg.innerText = "아이디 또는 비밀번호가 일치하지 않습니다.";
@@ -52,12 +52,19 @@ export function setupLoginTabToggle() {
         return;
       }
 
-      console.log("✅ 유효성 검사 통과. 로그인 시도");
+      // localStorage 저장
+      localStorage.setItem("user", id);
+
+      // 이전페이지 이동
+      const prevPath = sessionStorage.getItem("prevPath") || "#/";
+      location.hash = prevPath.replace("#", "");
+      sessionStorage.removeItem("prevPath");
     });
   };
 
   renderForm("buyer");
 
+  // 탭 버튼 전환
   tabButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
       tabButtons.forEach((b) => b.classList.remove("active"));
