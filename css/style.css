@@ -298,7 +298,10 @@ input:focus {
   border-radius: 8px;
   appearance: none;
 
-	
+  background-image: url("../assets/icon-down-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right 12px bottom 16px;
+  background-size: 16px;
 }
 
 /* 체크박스 및 약관 */
