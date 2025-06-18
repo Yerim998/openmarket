@@ -298,6 +298,10 @@ input:focus {
   background-repeat: no-repeat;
 }
 
+.pw-icon.valid {
+  background-image: url("/assets/icon-check-on.svg");
+}
+
 /* 휴대폰번호 입력창 */
 .phoneGroup {
   display: flex;
@@ -322,11 +326,6 @@ input:focus {
 }
 
 /* 체크박스 및 약관 */
-.agree {
-  margin-top: 16px;
-  font-size: 0.9rem;
-  color: #333;
-}
 
 .check-agree {
   display: flex;

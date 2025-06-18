@@ -21,8 +21,8 @@ export default function SignUp() {
           <div class="id-check">
             <input type="text" placeholder="" id="idInput" />
             <button type="button" class="check-btn">중복확인</button>
+            </div>
 						<p class="error-msg" id="id-error"></p>
-          </div>
 
 						<label>비밀번호</label>
 						<div class="pw-box">

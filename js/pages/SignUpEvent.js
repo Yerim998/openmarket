@@ -23,21 +23,35 @@ export function setupSignUpEvent() {
   //아이디 mock 데이터⭐⭐⭐
   const dummyUsers = ["dummy123", "test1234"];
 
-  //아이디 중복 확인
+  //아이디 확인 시작
   idCheckBtn.addEventListener("click", () => {
     const id = idInput.value.trim();
     idError.style.display = "block";
+    idError.style.color = "#eb5757";
 
-    if (!/^[a-zA-Z0-9]{1,20}$/.test(id)) {
-      idError.innerText =
-        "20자 이내의 영문 소문자, 대문자, 숫자만 사용 가능해요";
+    //id 정규식
+    if (!/^[a-zA-Z0-9]{8,20}$/.test(id)) {
+      idError.innerText = "8~20자 이내의 영문 대소문자, 숫자만 사용 가능해요";
       return;
     }
-
+    //중복 및 패스
     if (dummyUsers.includes(id)) {
       idError.innerText = "이미 사용중인 아이디입니다.";
     } else {
       idError.innerText = "멋진 아이디네요 :)";
+      idError.style.color = "green";
+    }
+  });
+  //아이디 확인 끝
+
+  //패스워드 확인 시작
+  pwInput.addEventListener("input", () => {
+    const pw = pwInput.value.trim();
+    pwError.style.display = "block";
+
+    if (!/^(?=.*[a-zA-z])(?=.*[0~9])(?=.*[!@#$%^&*]){8,20}$/.test(pw)) {
+      pwError.innerText =
+        "8~20자의 영문 대소문자, 숫자, 특수문자를 사용해주세요.";
     }
   });
 }
