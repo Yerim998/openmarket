@@ -19,27 +19,27 @@ export default function SignUp() {
 
           <label>아이디</label>
           <div class="id-check">
-            <input type="text" placeholder="" id="idInput" />
+            <input type="text"  id="idInput" />
             <button type="button" class="check-btn">중복확인</button>
             </div>
 						<p class="error-msg" id="id-error"></p>
 
 						<label>비밀번호</label>
 						<div class="pw-box">
-							<input type="password" placeholder=""  id="pwInput" />
+							<input type="password"  id="pwInput" />
 							<span class="pw-icon" id="pw-icon"></span>
 						</div>
 						<p class="error-msg" id="pw-error"></p>
 
           <label>비밀번호 재확인</label>
 					<div class="pw-box">
-          <input type="password" id="confirmPwInput" placeholder="" />
+          <input type="password" id="confirmPwInput"/>
 					<span class="pw-icon" id="confirm-icon"></span>
 					</div>
 					<p class="error-msg" id="confirm-error"></p>
 
           <label>이름</label>
-          <input type="text" placeholder=""  id="nameInput" />
+          <input type="text" id="nameInput" />
 
           <label>휴대폰번호</label>
           <div class="phoneGroup">
@@ -51,8 +51,9 @@ export default function SignUp() {
               <option value="018">018</option>
               <option value="019">019</option>
             </select>
-            <input type="text" placeholder="" id="phoneMid" maxlength="4" />
-            <input type="text" placeholder="" id="phoneEnd" maxlength="4" />
+            <input type="text"
+            id="phoneMid" maxlength="4" />
+            <input type="text" id="phoneEnd" maxlength="4" />
           </div>
 					<p class="error-msg" id="phone-error"></p>
 
