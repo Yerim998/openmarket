@@ -40,9 +40,7 @@ export function setupSignUpEvent() {
     if (!/^[a-zA-Z0-9]{8,20}$/.test(id)) {
       idError.innerText = "8~20자 이내의 영문 대소문자, 숫자만 사용 가능해요";
       idValid = false;
-    }
-    //중복 및 패스
-    if (dummyUsers.includes(id)) {
+    } else if (dummyUsers.includes(id)) {
       idError.innerText = "이미 사용중인 아이디입니다.";
       idValid = false;
     } else {
@@ -64,7 +62,6 @@ export function setupSignUpEvent() {
       pwValid = false;
       pwError.style.display = "block";
       pwInput.classList.add("input-error");
-      updateSubmitBtn();
       return;
     }
 
@@ -88,6 +85,14 @@ export function setupSignUpEvent() {
     const pw = pwInput.value.trim();
     const confirmPw = confirmPwInput.value.trim();
     confirmError.style.display = "block";
+
+    if (!pw) {
+      pwError.innerText = "필수 정보입니다.";
+      pwValid = false;
+      pwError.style.display = "block";
+      pwInput.classList.add("input-error");
+      return;
+    }
 
     if (pw !== confirmPw) {
       confirmError.innerText = "비밀번호가 일치하지 않습니다.";
@@ -127,6 +132,7 @@ export function setupSignUpEvent() {
       phoneEnd.classList.remove("input-error");
       phoneValid = true;
     }
+    updateSubmitBtn();
   }
 
   phoneNum.addEventListener("change", checkPhone);
@@ -163,9 +169,9 @@ export function setupSignUpEvent() {
       submitBtn.classList.remove("active");
     }
   }
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    // 유효성 최종 체크
     if (
       idValid &&
       pwValid &&
@@ -173,8 +179,7 @@ export function setupSignUpEvent() {
       phoneValid &&
       agreeCheckbox.checked
     ) {
-      alert("회원가입이 완료되었습니다!");
-      // 이후: 서버 전송 or 이동 로직 작성
+      alert("회원가입이 완료되었습니다.");
     }
   });
 }

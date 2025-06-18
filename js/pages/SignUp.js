@@ -68,5 +68,8 @@ export default function SignUp() {
       </div>
     </div>
   </section>
+  <footer class="signup-footer">
+    <span>ⓒ getti.yerim998</span>
+  </footer>
   `;
 }

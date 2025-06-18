@@ -260,13 +260,13 @@ input:focus {
 .signup-form button[type="submit"] {
   width: 100%;
   padding: 14px;
-  background-color: #ce2160;
+  background-color: #ccc;
   color: #fff;
   border: none;
   border-radius: 8px;
   font-weight: bold;
   font-size: 1rem;
-  cursor: pointer;
+  cursor: not-allowed;
   transition: background-color 0.2s ease;
 }
 
@@ -350,12 +350,21 @@ input:focus {
   accent-color: #ce2160;
 }
 
-.submit-btn:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.submit-btn.active {
+.signup-form button[type="submit"].active {
   background-color: #ce2160;
   cursor: pointer;
+}
+
+.signup-footer {
+  margin-top: 100px;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  background-color: #fff;
+
+  span {
+    color: #ccc;
+  }
 }
