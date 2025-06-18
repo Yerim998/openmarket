@@ -6,15 +6,17 @@ import Header, { setupHeaderEvent } from "./components/Header.js";
 import { setupSignUpEvent } from "./pages/SignUpEvent.js";
 
 const routes = {
-  "/": LoginPage,
+  "/login": LoginPage,
   "/signup": SignUp,
   "/list": List,
 };
 
 //주소 찾기(파싱)
 function parseLocation() {
-  const hash = location.hash.slice(1).toLowerCase() || "/";
-  return "/" + hash.replace(/\/$/, "");
+  let hash = location.hash.replace("#", "").toLowerCase();
+  if (!hash) hash = "/login";
+  if (!hash.startsWith("/")) hash = "/" + hash;
+  return hash;
 }
 
 //로그인 상태 확인-토큰교체 필수⭐⭐⭐
@@ -31,7 +33,7 @@ function router() {
   //비로그인시 로그인페이지로
   if (path !== "/" && !isLoggedIn()) {
     sessionStorage.setItem("prevPath", location.hash);
-    location.hash = "/";
+    location.hash = "/login";
     return;
   }
 
@@ -40,7 +42,7 @@ function router() {
 
   //gnb등장조건
   const gnbContainer = document.getElementById("gnb");
-  const hideGnbPaths = ["/", "/signup"];
+  const hideGnbPaths = ["/login", "/signup", "/"];
 
   if (hideGnbPaths.includes(path)) {
     gnbContainer.innerHTML = "";
