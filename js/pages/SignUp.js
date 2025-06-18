@@ -15,8 +15,8 @@ export default function SignUp() {
 
       <div class="signup-container">
 
-        <!-- 구매회원가입 폼 -->
         <form id="signup-form" class="signup-form" data-type="buyer">
+
           <label>아이디</label>
           <div class="id-check">
             <input type="text" placeholder="" id="idInput" />
@@ -24,17 +24,17 @@ export default function SignUp() {
 						<p class="error-msg" id="id-error"></p>
           </div>
 
-          <label>비밀번호</label>
-					<div class="pw-box">
-						<input type="password" placeholder=""  id="pwInput" />
-						<span class="pw-icon" id="pw-icon"></span>
-					</div>
-					<p class="error-msg" id="pw-error"></p>
+						<label>비밀번호</label>
+						<div class="pw-box">
+							<input type="password" placeholder=""  id="pwInput" />
+							<span class="pw-icon"></span>
+						</div>
+						<p class="error-msg" id="pw-error"></p>
 
           <label>비밀번호 재확인</label>
 					<div class="pw-box">
           <input type="password" id="confirmPwInput" placeholder="" />
-					<span class="pw-icon" id="pw-icon"></span>
+					<span class="pw-icon"></span>
 					</div>
 					<p class="error-msg" id="confirm-error"></p>
 
@@ -43,7 +43,7 @@ export default function SignUp() {
 
           <label>휴대폰번호</label>
           <div class="phoneGroup">
-            <select class="phoneNum" id="phoneFirst">
+            <select class="phoneNum">
               <option value="010">010</option>
               <option value="011">011</option>
               <option value="016">016</option>
@@ -51,14 +51,13 @@ export default function SignUp() {
               <option value="018">018</option>
               <option value="019">019</option>
             </select>
-            <input type="text" placeholder="" / id="phoneMiddle" maxlength="4" >
-            <input type="text" placeholder="" id="phoneLast" maxlength="4" />
+            <input type="text" placeholder="" id="phoneMid" maxlength="4" />
+            <input type="text" placeholder="" id="phoneEnd" maxlength="4" />
           </div>
 					<p class="error-msg" id="phone-error"></p>
 
-
           <div class="agreement">
-            <label>
+            <label class="check-agree">
               <input type="checkbox" id="agree" />
 								게티마켓 이용약관 및 개인정보처리방침에 동의합니다.
             </label>
@@ -66,7 +65,6 @@ export default function SignUp() {
 
           <button type="submit" class="submit-btn" disabled>가입하기</button>
         </form>
-
       </div>
     </div>
   </section>

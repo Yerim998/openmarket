@@ -328,11 +328,18 @@ input:focus {
   color: #333;
 }
 
-.agree label {
+.check-agree {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 8px;
   cursor: pointer;
+}
+
+#agree {
+  width: 16px;
+  height: 16px;
+  background-color: #ce2160;
 }
 
 .signup-form button[type="submit"]:disabled {

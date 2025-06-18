@@ -3,6 +3,7 @@ import SignUp from "./pages/SignUp.js";
 import { setupLoginTabToggle } from "./pages/LoginTab.js";
 import List from "./pages/List.js";
 import Header, { setupHeaderEvent } from "./components/Header.js";
+import { setupSignUpEvent } from "./pages/SignUpEvent.js";
 
 const routes = {
   "/": LoginPage,
@@ -47,6 +48,10 @@ function router() {
   } else {
     gnbContainer.innerHTML = Header();
     setupHeaderEvent();
+  }
+
+  if (path === "/signup") {
+    setupSignUpEvent();
   }
 }
 window.addEventListener("hashchange", router);
