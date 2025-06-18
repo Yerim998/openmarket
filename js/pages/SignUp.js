@@ -27,14 +27,14 @@ export default function SignUp() {
 						<label>비밀번호</label>
 						<div class="pw-box">
 							<input type="password" placeholder=""  id="pwInput" />
-							<span class="pw-icon"></span>
+							<span class="pw-icon" id="pw-icon"></span>
 						</div>
 						<p class="error-msg" id="pw-error"></p>
 
           <label>비밀번호 재확인</label>
 					<div class="pw-box">
           <input type="password" id="confirmPwInput" placeholder="" />
-					<span class="pw-icon"></span>
+					<span class="pw-icon" id="confirm-icon"></span>
 					</div>
 					<p class="error-msg" id="confirm-error"></p>
 

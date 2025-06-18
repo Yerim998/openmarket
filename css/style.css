@@ -302,6 +302,10 @@ input:focus {
   background-image: url("/assets/icon-check-on.svg");
 }
 
+.input-error {
+  border: 1px solid #eb5757 !important;
+}
+
 /* 휴대폰번호 입력창 */
 .phoneGroup {
   display: flex;
@@ -333,15 +337,25 @@ input:focus {
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  transition: color 0.3s;
+}
+
+.check-agree.active {
+  color: #ce2160;
 }
 
 #agree {
   width: 16px;
   height: 16px;
-  background-color: #ce2160;
+  accent-color: #ce2160;
 }
 
-.signup-form button[type="submit"]:disabled {
+.submit-btn:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+.submit-btn.active {
+  background-color: #ce2160;
+  cursor: pointer;
 }
