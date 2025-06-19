@@ -46,7 +46,7 @@ function router() {
 
   if (hideGnbPaths.includes(path)) {
     gnbContainer.innerHTML = "";
-    if (path === "/login") setupLoginTabToggle();
+    if (path === "/" || path === "/login") setupLoginTabToggle();
   } else {
     gnbContainer.innerHTML = Header();
     setupHeaderEvent();
