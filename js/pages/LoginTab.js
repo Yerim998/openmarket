@@ -1,4 +1,4 @@
-import { validateUser } from "../data/userStorage.js";
+import { loginAPI } from "../api.js";
 import { setSessionUser } from "../data/session.js";
 
 export function setupLoginTabToggle() {
@@ -13,42 +13,43 @@ export function setupLoginTabToggle() {
     const pwInput = form.querySelector('input[type="password"]');
     const errorMsg = form.querySelector("#login-error");
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const id = idInput.value.trim();
-      const pw = pwInput.value.trim();
+      const username = idInput.value.trim();
+      const password = pwInput.value.trim();
 
       errorMsg.style.display = "none";
       errorMsg.innerText = "";
 
-      if (!id) {
+      if (!username) {
         errorMsg.innerText = "아이디를 입력해주세요.";
         errorMsg.style.display = "block";
         idInput.focus();
         return;
       }
 
-      if (!pw) {
+      if (!password) {
         errorMsg.innerText = "비밀번호를 입력해주세요.";
         errorMsg.style.display = "block";
         pwInput.focus();
         return;
       }
 
-      const user = validateUser(id, pw);
-      if (!user) {
-        errorMsg.innerText = "아이디 또는 비밀번호가 일치하지 않습니다.";
+      try {
+        const data = await loginAPI({ username, password });
+
+        sessionStorage.setItem("token", data.token);
+        setSessionUser({ username, token: data.token });
+
+        //페이지 이동하기
+        const prevPath = sessionStorage.getItem("prevPath") || "#/";
+        location.hash = prevPath.replace("#", "");
+        sessionStorage.removeItem("prevPath");
+      } catch (error) {
+        errorMsg.innerText = error.message || "아이디와 비밀번호가 틀렸어요.";
         errorMsg.style.display = "block";
-        return;
       }
-
-      setSessionUser(user); //세션에 저장
-
-      //페이지 이동
-      const prevPath = sessionStorage.getItem("prevPath") || "#/";
-      location.hash = prevPath.replace("#", "");
-      sessionStorage.removeItem("prevPath");
     });
   }
 

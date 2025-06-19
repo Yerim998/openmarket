@@ -14,7 +14,7 @@ export async function loginAPI({ username, password }) {
 
   if (!response.ok) {
     const errorData = await response.json();
-    throw new Error(errorData.message || "로그인 실패");
+    throw new Error(errorData.message || "아이디와 비밀번호가 틀렸어요.");
   }
 
   const data = await response.json();
