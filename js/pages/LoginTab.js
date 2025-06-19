@@ -4,24 +4,15 @@ export function setupLoginTabToggle() {
 
   if (!tabButtons || !loginContainer) return;
 
-  const renderForm = (userType) => {
-    loginContainer.innerHTML = `
-      <form id="login-form" class="login-form" data-type="${userType}">
-        <input type="text" placeholder="아이디" />
-        <input type="password" placeholder="비밀번호" />
-        <p class="error-msg" id="login-error" style="display: none;"></p>
-        <button type="submit">로그인</button>
-      </form>
-    `;
-
+  function attachFormEvent() {
     const form = loginContainer.querySelector("#login-form");
+    const idInput = form.querySelector('input[type="text"]');
+    const pwInput = form.querySelector('input[type="password"]');
     const errorMsg = form.querySelector("#login-error");
 
     form.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const idInput = form.querySelector('input[type="text"]');
-      const pwInput = form.querySelector('input[type="password"]');
       const id = idInput.value.trim();
       const pw = pwInput.value.trim();
 
@@ -54,12 +45,24 @@ export function setupLoginTabToggle() {
 
       // localStorage 저장
       localStorage.setItem("user", id);
-
-      // 이전페이지 이동
+      // 로그인 성공 시 페이지 이동
       const prevPath = sessionStorage.getItem("prevPath") || "#/";
       location.hash = prevPath.replace("#", "");
       sessionStorage.removeItem("prevPath");
     });
+  }
+
+  //로그인 폼 html렌더링
+  const renderForm = (userType) => {
+    loginContainer.innerHTML = `
+      <form id="login-form" class="login-form" data-type="${userType}">
+        <input type="text" placeholder="아이디" />
+        <input type="password" placeholder="비밀번호" />
+        <p class="error-msg" id="login-error" style="display: none;"></p>
+        <button type="submit">로그인</button>
+      </form>
+    `;
+    attachFormEvent();
   };
 
   renderForm("buyer");
