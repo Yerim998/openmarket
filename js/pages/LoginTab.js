@@ -1,3 +1,6 @@
+import { validateUser } from "../data/userStorage.js";
+import { setSessionUser } from "../data/session.js";
+
 export function setupLoginTabToggle() {
   const tabButtons = document.querySelectorAll(".tab button");
   const loginContainer = document.querySelector(".login-container");
@@ -33,19 +36,16 @@ export function setupLoginTabToggle() {
         return;
       }
 
-      // ⭐⭐⭐ 임시 더미 아이디
-      const dummyId = "test1234";
-      const dummyPw = "test234";
-
-      if (id !== dummyId || pw !== dummyPw) {
+      const user = validateUser(id, pw);
+      if (!user) {
         errorMsg.innerText = "아이디 또는 비밀번호가 일치하지 않습니다.";
         errorMsg.style.display = "block";
         return;
       }
 
-      // localStorage 저장
-      localStorage.setItem("user", id);
-      // 로그인 성공 시 페이지 이동
+      setSessionUser(user); //세션에 저장
+
+      //페이지 이동
       const prevPath = sessionStorage.getItem("prevPath") || "#/";
       location.hash = prevPath.replace("#", "");
       sessionStorage.removeItem("prevPath");
