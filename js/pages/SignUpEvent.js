@@ -1,14 +1,10 @@
 import router from "../router.js";
-
-function getUsers() {
-  return JSON.parse(localStorage.getItem("users")) || [];
-}
-
-function saveUser(userData) {
-  const users = getUsers();
-  users.push(userData);
-  localStorage.setItem("users", JSON.stringify(users));
-}
+import {
+  isDuplicatedId,
+  isDuplicatedPhone,
+  saveUser,
+  getUsers,
+} from "../data/userStorage.js";
 
 export function setupSignUpEvent() {
   const form = document.querySelector("#signup-form");
@@ -38,11 +34,7 @@ export function setupSignUpEvent() {
     pwConfirmValid = false,
     phoneValid = false;
 
-  //mock 데이터⭐⭐⭐
-  const dummyUsers = ["dummy123", "test1234"];
-  const dummyPhones = ["01012345678", "01087654321"];
-
-  //아이디 확인 시작
+  //아이디 중복 확인
   idCheckBtn.addEventListener("click", () => {
     const id = idInput.value.trim();
     idError.style.display = "block";
@@ -51,14 +43,17 @@ export function setupSignUpEvent() {
     //id 정규식
     if (!/^[a-zA-Z0-9]{8,20}$/.test(id)) {
       idError.innerText = "8~20자 이내의 영문 대소문자, 숫자만 사용 가능해요";
-      idValid = false;
-    } else if (dummyUsers.includes(id)) {
+      return;
+    }
+
+    const users = getUsers();
+    const isDuplicate = users.some((user) => user.id === id);
+
+    if (isDuplicate) {
       idError.innerText = "이미 사용중인 아이디입니다.";
-      idValid = false;
     } else {
       idError.innerText = "멋진 아이디네요 :)";
       idError.style.color = "green";
-      idValid = true;
     }
     updateSubmitBtn();
   });
@@ -123,7 +118,6 @@ export function setupSignUpEvent() {
   });
 
   //전화번호 유효성 검사
-
   function onlyNum(e) {
     e.target.value = e.target.value.replace(/[^0-9]/g, ""); //숫자만 남기고 삭제
   }
