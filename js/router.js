@@ -44,11 +44,11 @@ function router() {
 
   //gnb등장조건
   const gnbContainer = document.getElementById("gnb");
-  const hideGnbPaths = ["/login", "/signup", "/"];
 
-  if (hideGnbPaths.includes(path)) {
+  if (!routes[path]) {
     gnbContainer.innerHTML = "";
-    if (path === "/" || path === "/login") setupLoginTabToggle();
+  } else if (["/login", "/signup", "/"].includes(path)) {
+    gnbContainer.innerHTML = "";
   } else {
     gnbContainer.innerHTML = Header();
     setupHeaderEvent();
