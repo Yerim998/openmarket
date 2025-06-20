@@ -33,35 +33,35 @@ function router() {
   console.log("현재 path:", path);
 
   //비로그인시 로그인페이지로
-  if (path !== "/" && !isLoggedIn()) {
+  if (!isLoggedIn() && path !== "/login" && path !== "/signup") {
     sessionStorage.setItem("prevPath", location.hash);
     location.hash = "/login";
     return;
   }
 
-  //app에 문자열 return-spa
+  //app에 html문자열 반환하기
   document.getElementById("app").innerHTML = render();
 
   //gnb등장조건
   const gnbContainer = document.getElementById("gnb");
+  const hideGnbPaths = ["/login", "/signup", "/"];
 
-  if (!routes[path]) {
-    gnbContainer.innerHTML = "";
-  } else if (["/login", "/signup", "/"].includes(path)) {
+  if (hideGnbPaths.includes(path) || !routes[path]) {
     gnbContainer.innerHTML = "";
   } else {
     gnbContainer.innerHTML = Header();
     setupHeaderEvent();
   }
 
+  // 페이지별 이벤트 바인딩
   if (path === "/signup") {
     setupSignUpEvent();
   }
-
-  if (route) {
-    route();
-  } else {
+  if (path === "/login") {
+    setupLoginTabToggle();
   }
 }
+
 window.addEventListener("hashchange", router);
+window.addEventListener("DOMContentLoaded", router);
 export default router;

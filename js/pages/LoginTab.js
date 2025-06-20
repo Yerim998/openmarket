@@ -1,5 +1,6 @@
 import { loginAPI } from "../api.js";
 import { setSessionUser } from "../data/session.js";
+import { setupTabToggle } from "../data/tabToggle.js";
 
 export function setupLoginTabToggle() {
   const tabButtons = document.querySelectorAll(".tab button");
@@ -42,10 +43,7 @@ export function setupLoginTabToggle() {
         sessionStorage.setItem("token", data.token);
         setSessionUser({ username, token: data.token });
 
-        //페이지 이동하기
-        const prevPath = sessionStorage.getItem("prevPath") || "#/";
-        location.hash = prevPath.replace("#", "");
-        sessionStorage.removeItem("prevPath");
+        location.hash = "#/product-list";
       } catch (error) {
         errorMsg.innerText = "아이디와 비밀번호가 틀렸어요.";
         errorMsg.style.display = "block";
@@ -54,28 +52,19 @@ export function setupLoginTabToggle() {
   }
 
   //로그인 폼 html렌더링
-  const renderForm = (userType) => {
+  function renderForm(userType) {
     loginContainer.innerHTML = `
-      <form id="login-form" class="login-form" data-type="${userType}">
+      <form id="login-form" data-type="${userType}">
         <input type="text" placeholder="아이디" />
         <input type="password" placeholder="비밀번호" />
-        <p class="error-msg" id="login-error" style="display: none;"></p>
+        <span class="error-msg" id="login-error" style="display: none;"></span>
         <button type="submit">로그인</button>
       </form>
     `;
     attachFormEvent();
-  };
+  }
 
   renderForm("buyer");
 
-  // 탭 버튼 전환
-  tabButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      tabButtons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const userType = btn.dataset.type;
-      renderForm(userType);
-    });
-  });
+  setupTabToggle(".tab button", renderForm);
 }
