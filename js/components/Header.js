@@ -1,6 +1,6 @@
 export default function Header() {
   return `
-<header class="gnb">
+	<div class="gnb">
       <h1 class="sr-only">getti</h1>
       <div class="gnb-content">
         <a href="#/" aria-label="getti 홈으로 이동하기" class="gnbLogo">
@@ -26,7 +26,7 @@ export default function Header() {
           </a>
         </nav>
       </div>
-    </header>
+    </div>
   `;
 }
 

@@ -502,3 +502,8 @@ input:focus {
   font-weight: 500;
   margin-left: 4px;
 }
+
+.product-grid a {
+  text-decoration: none;
+  color: #222;
+}

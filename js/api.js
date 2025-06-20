@@ -50,3 +50,11 @@ export async function fetchProductList() {
   const data = await response.json();
   return data.results;
 }
+
+export async function fetchProductDetail(productId) {
+  const response = await fetch(
+    `https://api.wenivops.co.kr/services/open-market/products/${productId}/`
+  );
+  if (!response.ok) throw new Error("상세 페이지를 불러오지 못했습니다.");
+  return await response.json();
+}

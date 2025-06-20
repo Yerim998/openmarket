@@ -8,7 +8,7 @@ export default async function renderProductListPage() {
       (product) => `
     <li>
       <article>
-				<a href="#/detail/${product.product_id}">
+				<a href="#/detail/${product.id}">
           <img src="${product.image}" alt="${product.name}" />
 					<p class="product-info">${product.info}</p>
           <h2>${product.name}</h2>
