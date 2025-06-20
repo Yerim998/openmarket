@@ -507,3 +507,40 @@ input:focus {
   text-decoration: none;
   color: #222;
 }
+
+/*상품 상세 페이지*/
+
+.product-detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+}
+
+.product-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 0 24px;
+}
+
+.purchase-buttons {
+  display: flex;
+}
+
+.quantity-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: #222 solid 1px;
+  color: #333;
+}
+.quantity-selector button {
+  background-color: #fff;
+  border: 1px solid #eee;
+  color: #333;
+}
