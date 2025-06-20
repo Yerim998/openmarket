@@ -1,4 +1,5 @@
 import router from "../router.js";
+import { signupAPI } from "../api.js";
 import {
   isDuplicatedId,
   isDuplicatedPhone,
@@ -51,9 +52,11 @@ export function setupSignUpEvent() {
 
     if (isDuplicate) {
       idError.innerText = "이미 사용중인 아이디입니다.";
+      idValid = false;
     } else {
       idError.innerText = "멋진 아이디네요 :)";
       idError.style.color = "green";
+      idValid = false;
     }
     updateSubmitBtn();
   });
@@ -66,23 +69,23 @@ export function setupSignUpEvent() {
 
     if (!pw) {
       pwError.innerText = "필수 정보입니다.";
-      pwValid = false;
       pwError.style.display = "block";
       pwInput.classList.add("input-error");
+      pwValid = false;
       return;
     }
 
     if (!/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,20}$/.test(pw)) {
       pwError.innerText =
         "8~20자의 영문 대소문자, 숫자, 특수문자를 사용해주세요.";
-      pwValid = false;
       pwIcon.classList.remove("valid");
       pwInput.classList.add("input-error");
+      pwValid = false;
     } else {
-      pwValid = true;
       pwError.style.display = "none";
       pwIcon.classList.add("valid");
       pwInput.classList.remove("input-error");
+      pwValid = true;
     }
     updateSubmitBtn();
   });
@@ -95,24 +98,24 @@ export function setupSignUpEvent() {
 
     if (!pw) {
       pwError.innerText = "필수 정보입니다.";
-      pwValid = false;
       pwError.style.display = "block";
       pwInput.classList.add("input-error");
+      pwValid = false;
       return;
     }
 
     if (pw !== confirmPw) {
       confirmError.innerText = "비밀번호가 일치하지 않습니다.";
-      pwConfirmValid = false;
       confirmIcon.classList.remove("valid");
       confirmPwInput.classList.add("input-error");
+      pwConfirmValid = false;
       updateSubmitBtn();
       return;
     } else {
       confirmError.style.display = "none";
-      pwConfirmValid = true;
       confirmIcon.classList.add("valid");
       confirmPwInput.classList.remove("input-error");
+      pwConfirmValid = true;
     }
     updateSubmitBtn();
   });
@@ -168,15 +171,15 @@ export function setupSignUpEvent() {
       phoneValid &&
       agreeCheckbox.checked
     ) {
-      submitBtn.disabled = false;
       submitBtn.classList.add("active");
+      submitBtn.disabled = false;
     } else {
-      submitBtn.disabled = true;
       submitBtn.classList.remove("active");
+      submitBtn.disabled = true;
     }
   }
 
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (
       idValid &&
@@ -186,16 +189,20 @@ export function setupSignUpEvent() {
       agreeCheckbox.checked
     ) {
       const userData = {
-        id: idInput.value.trim(),
-        pw: pwInput.value.trim(),
+        username: idInput.value.trim(),
+        password: pwInput.value.trim(),
         name: nameInput.value.trim(),
         phone: phoneNum.value + phoneMid.value + phoneEnd.value,
       };
-      saveUser(userData);
 
-      alert("회원가입이 완료되었습니다.");
-      location.hash = "#/login";
-      router();
+      try {
+        await signupAPI(userData);
+        alert("회원가입이 완료되었습니다.");
+        location.hash = "#/login";
+        router();
+      } catch (error) {
+        alert(error.message || "회원가입에 실패했습니다.");
+      }
     }
   });
 }

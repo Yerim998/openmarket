@@ -47,7 +47,7 @@ export function setupLoginTabToggle() {
         location.hash = prevPath.replace("#", "");
         sessionStorage.removeItem("prevPath");
       } catch (error) {
-        errorMsg.innerText = error.message || "아이디와 비밀번호가 틀렸어요.";
+        errorMsg.innerText = "아이디와 비밀번호가 틀렸어요.";
         errorMsg.style.display = "block";
       }
     });
