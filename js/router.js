@@ -1,9 +1,7 @@
-import LoginPage from "./pages/LoginPage.js";
-import SignUp from "./pages/SignUp.js";
+import renderLoginPage from "./pages/LoginPage.js";
 import { setupLoginTabToggle } from "./pages/LoginTab.js";
 import { setupSignUpEvent } from "./pages/SignUpEvent.js";
 import Header, { setupHeaderEvent } from "./components/Header.js"; //GNB
-import List from "./pages/List.js";
 import renderSignUpPage from "./pages/SignUp.js";
 import renderProductListPage from "./pages/List.js";
 
@@ -11,7 +9,7 @@ const routes = {
   "/login": renderLoginPage,
   "/signup": renderSignUpPage,
   "/product-list": renderProductListPage,
-  "/detail": renderDetailPage,
+  // "/detail": renderDetailPage,
 };
 
 //주소 찾기(파싱)
@@ -29,7 +27,7 @@ function isLoggedIn() {
 
 function router() {
   const path = parseLocation();
-  const render = routes[path] || LoginPage;
+  const render = routes[path] || renderLoginPage;
 
   console.log("현재 path:", path);
 

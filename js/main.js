@@ -1,8 +1,4 @@
 import router from "./router.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  if (!location.hash) {
-    location.hash = "/";
-  }
-  router();
-});
+window.addEventListener("hashchange", router);
+window.addEventListener("DOMContentLoaded", router);
