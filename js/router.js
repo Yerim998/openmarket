@@ -5,12 +5,13 @@ import Header, { setupHeaderEvent } from "./components/Header.js"; //GNB
 import renderSignUpPage from "./pages/SignUp.js";
 import renderProductListPage from "./pages/List.js";
 import renderNotFoundPage from "./pages/NotFound.js";
+import renderDetailPage from "./pages/Detail.js";
 
 const routes = {
   "/login": renderLoginPage,
   "/signup": renderSignUpPage,
   "/product-list": renderProductListPage,
-  // "/detail": renderDetailPage,
+  "/detail": renderDetailPage,
 };
 
 //주소 찾기(파싱)
@@ -37,6 +38,16 @@ async function router() {
     sessionStorage.setItem("prevPath", location.hash);
     location.hash = "/login";
     return;
+  }
+
+  if (path.startsWith("/detail/")) {
+    const id = path.split("/detail/")[1];
+    const html = await renderDetailPage(id);
+    document.getElementById("app").innerHTML = html;
+  } else {
+    const render = routes[path] || renderNotFoundPage;
+    const html = await render();
+    document.getElementById("app").innerHTML = html;
   }
 
   //app에 html문자열 반환하기
