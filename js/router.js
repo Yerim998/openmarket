@@ -4,6 +4,7 @@ import { setupSignUpEvent } from "./pages/SignUpEvent.js";
 import Header, { setupHeaderEvent } from "./components/Header.js"; //GNB
 import renderSignUpPage from "./pages/SignUp.js";
 import renderProductListPage from "./pages/List.js";
+import renderNotFoundPage from "./pages/NotFound.js";
 
 const routes = {
   "/login": renderLoginPage,
@@ -27,7 +28,7 @@ function isLoggedIn() {
 
 function router() {
   const path = parseLocation();
-  const render = routes[path] || renderLoginPage;
+  const render = routes[path] || renderNotFoundPage;
 
   console.log("현재 path:", path);
 
