@@ -370,3 +370,41 @@ input:focus {
 }
 
 /*404 스타일 */
+
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 200px;
+}
+
+.not-found img {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.not-found .buttons {
+  display: flex;
+}
+
+.not-found .buttons button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.back-button {
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  color: #aaa;
+}
+
+.not-found-text {
+  padding: 1rem;
+  text-align: start;
+}
+
+.not-found-text p {
+  color: #aaa;
+}
