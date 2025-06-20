@@ -26,7 +26,7 @@ function isLoggedIn() {
   return !!localStorage.getItem("user");
 }
 
-function router() {
+async function router() {
   const path = parseLocation();
   const render = routes[path] || renderNotFoundPage;
 
@@ -40,7 +40,8 @@ function router() {
   }
 
   //app에 html문자열 반환하기
-  document.getElementById("app").innerHTML = render();
+  const html = await render();
+  document.getElementById("app").innerHTML = html;
 
   //gnb등장조건
   const gnbContainer = document.getElementById("gnb");

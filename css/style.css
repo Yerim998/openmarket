@@ -443,3 +443,38 @@ input:focus {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+/**상품 목록**/
+
+.list {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: center;
+  gap: 50px;
+  padding: 120px 0px;
+}
+
+.product-grid li {
+  list-style: none;
+  flex: 0 1 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.2s;
+}
+.product-grid li:hover {
+  background-color: #eeeeee;
+  transition: background-color 0.2s;
+}
+
+.product-grid img {
+  width: 100%;
+  height: 300px;
+  border-radius: 12px;
+  object-fit: cover;
+}

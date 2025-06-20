@@ -1,4 +1,22 @@
-export default function renderProductListPage() {
+import { fetchProductList } from "../api.js";
+
+export default async function renderProductListPage() {
+  const products = await fetchProductList();
+
+  const productItems = products
+    .map(
+      (product) => `
+    <li>
+      <article>
+        <img src="${product.image}" alt="${product.product_name}" />
+        <h2>${product.product_name}</h2>
+        <span>${product.price.toLocaleString()}원</span>
+      </article>
+    </li>
+  `
+    )
+    .join("");
+
   return `
 	<main class="product-list-page">
 	<!-- 상단 배너 -->
@@ -14,48 +32,7 @@ export default function renderProductListPage() {
 		<!-- 상품 목록 -->
     <section class="list">
 		<ul class="product-grid">
-			<li>
-				<article>
-				<img src=".." alt="상품명" />
-				<h2>상품명</h2>
-				<span>가격 및 정보</span>
-				</article>
-			</li>
-			<li>
-				<article>
-				<img src=".." alt="상품명" />
-				<h2>상품명</h2>
-				<span>가격 및 정보</span>
-				</article>
-			</li>
-			<li>
-				<article>
-				<img src=".." alt="상품명" />
-				<h2>상품명</h2>
-				<span>가격 및 정보</span>
-				</article>
-			</li>
-			<li>
-				<article>
-				<img src=".." alt="상품명" />
-				<h2>상품명</h2>
-				<span>가격 및 정보</span>
-				</article>
-			</li>
-			<li>
-				<article>
-				<img src=".." alt="상품명" />
-				<h2>상품명</h2>
-				<span>가격 및 정보</span>
-				</article>
-			</li>
-			<li>
-				<article>
-				<img src=".." alt="상품명" />
-				<h2>상품명</h2>
-				<span>가격 및 정보</span>
-				</article>
-			</li>
+			${productItems}
     </ul>
     </section>
 		</main>

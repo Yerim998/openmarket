@@ -37,3 +37,16 @@ export async function signupAPI(userData) {
 
   return await response.json();
 }
+
+export async function fetchProductList() {
+  const response = await fetch(
+    "https://api.wenivops.co.kr/services/open-market/products/"
+  );
+
+  if (!response.ok) {
+    throw new Error("상품 목록을 불러오지 못했습니다.");
+  }
+
+  const data = await response.json();
+  return data.results; // API 명세에 따라 key 확인 필요
+}
