@@ -127,6 +127,7 @@ input {
   padding: 10px 40px;
   border-bottom: 1px solid #ddd;
   background-color: #ffffff;
+  justify-items: center;
 }
 
 .gnb-content {
@@ -134,9 +135,6 @@ input {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 750px;
-  margin: 0 auto;
-  gap: 16px;
 }
 
 .search {
@@ -144,7 +142,7 @@ input {
   margin: 0 12px;
   position: relative;
   width: 100%;
-  max-width: 400px;
+  max-width: 50%;
 }
 .gnbInput {
   width: 100%;
@@ -455,7 +453,7 @@ input:focus {
   display: grid;
   grid-template-columns: repeat(auto-fill, 300px);
   justify-content: center;
-  gap: 80px;
+  gap: 60px;
   padding: 120px 0px;
 }
 
@@ -477,4 +475,30 @@ input:focus {
   height: 300px;
   border-radius: 12px;
   object-fit: cover;
+}
+
+.product-grid h2 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.product-info {
+  font-size: 1rem;
+  font-weight: 300;
+  color: #ddd;
+  margin: 0;
+  margin-top: 16px;
+}
+
+.product-price {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.product-price span {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-left: 4px;
 }

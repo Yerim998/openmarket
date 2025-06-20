@@ -9,9 +9,9 @@ export default async function renderProductListPage() {
     <li>
       <article>
         <img src="${product.image}" alt="${product.name}" />
-				<p>${product.info}</p>
+				<p class="product-info">${product.info}</p>
         <h2>${product.name}</h2>
-        <span>${product.price.toLocaleString()}원</span>
+        <p class="product-price">${product.price.toLocaleString()}<span>원</span></p>
       </article>
     </li>
   `
