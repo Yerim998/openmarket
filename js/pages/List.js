@@ -8,8 +8,9 @@ export default async function renderProductListPage() {
       (product) => `
     <li>
       <article>
-        <img src="${product.image}" alt="${product.product_name}" />
-        <h2>${product.product_name}</h2>
+        <img src="${product.image}" alt="${product.name}" />
+				<p>${product.info}</p>
+        <h2>${product.name}</h2>
         <span>${product.price.toLocaleString()}원</span>
       </article>
     </li>

@@ -48,5 +48,5 @@ export async function fetchProductList() {
   }
 
   const data = await response.json();
-  return data.results; // API 명세에 따라 key 확인 필요
+  return data.results;
 }
