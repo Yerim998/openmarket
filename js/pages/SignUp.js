@@ -1,4 +1,4 @@
-export default function SignUp() {
+export default function renderSignUpPage() {
   return `
   <section class="signUpPage">
     <h1 class="logo">

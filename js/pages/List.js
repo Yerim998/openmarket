@@ -1,4 +1,4 @@
-export default function List() {
+export default function renderProductListPage() {
   return `
     <section class="list">
       <h2>리스트 (임시)</h2>

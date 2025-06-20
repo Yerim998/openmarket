@@ -1,14 +1,17 @@
 import LoginPage from "./pages/LoginPage.js";
 import SignUp from "./pages/SignUp.js";
 import { setupLoginTabToggle } from "./pages/LoginTab.js";
-import List from "./pages/List.js";
-import Header, { setupHeaderEvent } from "./components/Header.js";
 import { setupSignUpEvent } from "./pages/SignUpEvent.js";
+import Header, { setupHeaderEvent } from "./components/Header.js"; //GNB
+import List from "./pages/List.js";
+import renderSignUpPage from "./pages/SignUp.js";
+import renderProductListPage from "./pages/List.js";
 
 const routes = {
-  "/login": LoginPage,
-  "/signup": SignUp,
-  "/list": List,
+  "/login": renderLoginPage,
+  "/signup": renderSignUpPage,
+  "/product-list": renderProductListPage,
+  "/detail": renderDetailPage,
 };
 
 //주소 찾기(파싱)
@@ -54,6 +57,11 @@ function router() {
 
   if (path === "/signup") {
     setupSignUpEvent();
+  }
+
+  if (route) {
+    route();
+  } else {
   }
 }
 window.addEventListener("hashchange", router);
